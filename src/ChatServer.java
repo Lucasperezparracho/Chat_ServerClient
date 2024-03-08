@@ -55,6 +55,10 @@ public class ChatServer {
 
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     String message = new String(buffer, 0, bytesRead);
+                    if (message.equals("/bye")) {
+                        broadcastMessage(nickname + " dejó este chat.");
+                        break;
+                    }
                     System.out.println(nickname + ": " + message);
                     broadcastMessage(nickname + ": " + message);
                 }
